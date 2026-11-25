@@ -355,5 +355,26 @@
         </div>
       </section>
     </main>
+    <script>
+      const story = document.querySelector(".story");
+
+      if (story && "IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        story.classList.add("story--reveal-ready");
+
+        const observer = new IntersectionObserver((entries) => {
+          story.classList.toggle("story--visible", entries[0].isIntersecting);
+        }, { rootMargin: "0px 0px -10% 0px", threshold: 0 });
+
+        observer.observe(story);
+
+        const photoObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            entry.target.classList.toggle("story__photo--visible", entry.isIntersecting);
+          });
+        }, { rootMargin: "0px 0px -10% 0px", threshold: 0 });
+
+        story.querySelectorAll(".story__photo").forEach((photo) => photoObserver.observe(photo));
+      }
+    </script>
   </body>
 </html>
