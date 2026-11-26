@@ -250,8 +250,28 @@ body { margin: 0; background: #080a09; }
   transform: translateY(0);
 }
 
+/* 2섹션 제목과 아래 소개 문단: 왼쪽에서 오른쪽으로 슬라이드하며 나타남(문단은 제목 뒤 0.25초) */
+.story--reveal-ready .story__intro h2,
+.story--reveal-ready .story__intro p {
+  opacity: 0;
+  transform: translateX(-80px);
+  transition: opacity 600ms ease, transform 600ms cubic-bezier(.22, 1, .36, 1);
+}
+
+.story--reveal-ready.story--visible .story__intro h2,
+.story--reveal-ready.story--visible .story__intro p {
+  opacity: 1;
+  transform: translateX(0);
+  transition-duration: 1100ms;
+  transition-delay: 200ms;
+}
+
+.story--reveal-ready.story--visible .story__intro p { transition-delay: 450ms; }
+
 @media (prefers-reduced-motion: reduce) {
-  .story--reveal-ready .story__canvas {
+  .story--reveal-ready .story__canvas,
+  .story--reveal-ready .story__intro h2,
+  .story--reveal-ready .story__intro p {
     opacity: 1;
     transform: none;
     transition: none;
@@ -356,15 +376,26 @@ body { margin: 0; background: #080a09; }
   min-width: 0;
   margin-top: 0;
   opacity: 0;
-  filter: blur(12px);
-  transform: translateY(20px);
-  transition: opacity 800ms ease, filter 800ms ease, transform 800ms cubic-bezier(.22, 1, .36, 1);
+  filter: blur(6px);
+  transform-origin: 0 0;
+  transform: translate(var(--morph-x, 0px), var(--morph-y, 24px));
+  transition:
+    opacity 700ms ease,
+    filter 700ms ease,
+    transform 1000ms cubic-bezier(.65, 0, .35, 1);
 }
+
+/* 레이아웃 변신: 이전 문구 자리에서 출발해 제자리로 이동(시작 위치로 순간 이동할 때는 전환 없음) */
+.story--pin-ready .story__detail-item--jump { transition: none; }
 
 .story--pin-ready .story__detail-item--active {
   opacity: 1;
   filter: blur(0);
-  transform: translateY(0);
+  transform: none;
+  transition:
+    opacity 700ms ease 250ms,
+    filter 700ms ease 250ms,
+    transform 1000ms cubic-bezier(.65, 0, .35, 1);
 }
 
 /* 고정 스토리 문구별 위치 (Figma `애니메이션` › 2-2·2-3·2-4 프레임, 1920×2272 기준)
@@ -2204,9 +2235,7 @@ body { margin: 0; background: #080a09; }
 .site-header--dark .site-nav a:focus-visible,
 .site-header--dark .site-logo:focus-visible { outline-color: #1b1b1b; }
 
-/* 1섹션 히어로: 커튼형 장면 전환(첫 화면) + 스크롤에 따라 제목 글자가 하나씩 나타남 */
-.motion .hero-pin { height: calc(min(1080px, max(720px, 100svh)) + 100svh); }
-.motion .hero-pin > .hero { position: sticky; top: 0; }
+/* 1섹션 히어로: 접속하면 커튼형 장면 전환 → 제목 글자가 하나씩 → 캡션 페이드 업 (스크롤과 무관) */
 
 .hero__curtain {
   position: absolute;
@@ -2227,9 +2256,34 @@ body { margin: 0; background: #080a09; }
 .hero h1 span.hero__char {
   display: inline-block;
   white-space: pre;
-  opacity: var(--char-progress, 0);
-  filter: blur(calc((1 - var(--char-progress, 0)) * 8px));
-  transform: translateY(calc((1 - var(--char-progress, 0)) * 18px));
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(18px);
+  transition:
+    opacity 900ms ease var(--char-delay, 0ms),
+    filter 900ms ease var(--char-delay, 0ms),
+    transform 900ms cubic-bezier(.22, 1, .36, 1) var(--char-delay, 0ms);
+}
+
+.hero--play h1 span.hero__char {
+  opacity: 1;
+  filter: blur(0);
+  transform: none;
+}
+
+.motion .hero:not(.hero--animate) h1 { visibility: hidden; }
+
+.motion .hero__caption {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 1000ms ease var(--caption-delay, 0ms),
+    transform 1000ms cubic-bezier(.22, 1, .36, 1) var(--caption-delay, 0ms);
+}
+
+.motion .hero--play .hero__caption {
+  opacity: 1;
+  transform: none;
 }
 
 /* 4섹션 향 선택 체계: 1·2·3마패가 이 순서로 놓이고, 펼친 카드만 넓어지며 나머지는 좌우 너비가 줄어 접힌다

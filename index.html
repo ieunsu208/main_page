@@ -8,6 +8,12 @@
     <link rel="icon" href="./assets/logo-mark.svg" type="image/svg+xml" />
     <link rel="preload" href="./assets/hero-background.png" as="image" />
     <link rel="stylesheet" href="./style.css" />
+    <script>
+      // 첫 화면부터 1섹션 제목·캡션을 숨겨 두기 위해 미리 motion 클래스를 붙임
+      if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.documentElement.classList.add("motion");
+      }
+    </script>
   </head>
   <body>
     <header class="site-header">
@@ -649,9 +655,41 @@
             const overflow = window.innerWidth <= 600 ? Math.max(0, paragraph.scrollWidth - line.clientWidth) : 0;
 
             paragraph.style.setProperty("--story-line-shift", `${-overflow * readingProgress}px`);
-            item.classList.toggle("story__detail-item--active", active);
-            item.setAttribute("aria-hidden", String(!active));
           });
+
+          if (activeIndex !== storyActiveIndex) morphStoryItem(storyActiveIndex, activeIndex);
+        };
+
+        // 레이아웃 변신: 문구가 바뀔 때 이전 문구는 다음 위치로 옮겨 가며 사라지고,
+        // 다음 문구는 이전 위치에서 출발해 제자리로 옮겨 오며 나타난다.
+        let storyActiveIndex = -1;
+        const morphStoryItem = (fromIndex, toIndex) => {
+          storyActiveIndex = toIndex;
+          const from = storyItems[fromIndex];
+          const to = storyItems[toIndex];
+          const offset = (a, b) => ({
+            x: b.offsetLeft - a.offsetLeft,
+            y: b.offsetTop - a.offsetTop,
+          });
+
+          if (from) {
+            const move = to ? offset(from, to) : { x: 0, y: 0 };
+            from.style.setProperty("--morph-x", `${move.x}px`);
+            from.style.setProperty("--morph-y", `${move.y}px`);
+            from.classList.remove("story__detail-item--active");
+            from.setAttribute("aria-hidden", "true");
+          }
+
+          if (to) {
+            const move = from ? offset(to, from) : { x: 0, y: 24 };
+            to.classList.add("story__detail-item--jump");
+            to.style.setProperty("--morph-x", `${move.x}px`);
+            to.style.setProperty("--morph-y", `${move.y}px`);
+            void to.offsetWidth;
+            to.classList.remove("story__detail-item--jump");
+            to.classList.add("story__detail-item--active");
+            to.setAttribute("aria-hidden", "false");
+          }
         };
 
         const scheduleStoryScroll = () => {
@@ -761,12 +799,12 @@
         updateHeaderTone();
       }
 
-      // 1섹션: 커튼형 장면 전환(첫 화면) + 스크롤하면 제목 글자가 하나씩 나타남
-      const heroPin = document.querySelector(".hero-pin");
+      // 1섹션: 접속하면 커튼형 장면 전환 → 제목 글자가 하나씩 나타나고 → 아래 캡션이 페이드 업 (스크롤과 무관)
       const hero = document.querySelector(".hero");
       const heroChars = [];
 
       if (canAnimate && hero) {
+        hero.classList.add("hero--animate");
         const heroTitle = hero.querySelector("h1");
         const splitText = (node) => {
           [...node.childNodes].forEach((child) => {
@@ -781,6 +819,7 @@
                 span.className = "hero__char";
                 span.setAttribute("aria-hidden", "true");
                 span.textContent = char;
+                span.style.setProperty("--char-delay", `${700 + heroChars.length * 70}ms`);
                 heroChars.push(span);
                 fragment.append(span);
               });
@@ -791,6 +830,7 @@
           });
         };
         splitText(heroTitle);
+        hero.style.setProperty("--caption-delay", `${700 + heroChars.length * 70 + 300}ms`);
 
         const curtains = ["left", "right"].map((side) => {
           const curtain = document.createElement("div");
@@ -801,7 +841,7 @@
         });
 
         requestAnimationFrame(() => requestAnimationFrame(() => {
-          hero.classList.add("hero--open");
+          hero.classList.add("hero--open", "hero--play");
           setTimeout(() => curtains.forEach((curtain) => curtain.remove()), 1700);
         }));
       }
@@ -1015,7 +1055,7 @@
         render(false);
       });
 
-      // 스크롤 연동: 히어로 글자 · 카드 쌓기 · 라이프스타일 풀 스크린 확장
+      // 스크롤 연동: 카드 쌓기 · 라이프스타일 풀 스크린 확장
       if (canAnimate) {
         const stackSections = [...document.querySelectorAll(".mapea-stack > .mapea-feature")];
         const expandSections = [...document.querySelectorAll(".lifestyle__stage")];
@@ -1024,16 +1064,6 @@
         const updateScrollMotion = () => {
           scrollFrame = 0;
           const viewport = window.innerHeight;
-
-          if (heroPin && heroChars.length) {
-            const distance = Math.max(1, heroPin.offsetHeight - hero.offsetHeight);
-            const progress = clamp01(-heroPin.getBoundingClientRect().top / (distance * .85));
-            const spread = 6;
-            heroChars.forEach((span, index) => {
-              const local = clamp01((progress * (heroChars.length + spread) - index) / spread);
-              span.style.setProperty("--char-progress", local.toFixed(3));
-            });
-          }
 
           stackSections.forEach((section, index) => {
             section.style.setProperty("--stick-top", `${Math.min(0, viewport - section.offsetHeight)}px`);
