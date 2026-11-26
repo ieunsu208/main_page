@@ -10,30 +10,30 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-logo" href="#main" aria-label="MILDO 메인으로 이동">
+          <img src="./assets/logo-mark.svg" width="23" height="21" alt="" />
+          <span>MILDO</span>
+        </a>
+
+        <nav class="site-nav" aria-label="주 메뉴">
+          <a href="#main" aria-current="page">MAIN</a>
+          <span>BRAND</span>
+          <span>CATEGORY</span>
+        </nav>
+
+        <span class="site-account" aria-hidden="true">
+          <img src="./assets/account-icon.svg" width="20" height="20" alt="" />
+        </span>
+      </div>
+    </header>
     <main id="main">
+      <div class="hero-pin">
       <section class="hero" aria-labelledby="hero-title">
-        <header class="site-header">
-          <div class="site-header__inner">
-            <a class="site-logo" href="#main" aria-label="MILDO 메인으로 이동">
-              <img src="./assets/logo-mark.svg" width="23" height="21" alt="" />
-              <span>MILDO</span>
-            </a>
-
-            <nav class="site-nav" aria-label="주 메뉴">
-              <a href="#main" aria-current="page">MAIN</a>
-              <span>BRAND</span>
-              <span>CATEGORY</span>
-            </nav>
-
-            <span class="site-account" aria-hidden="true">
-              <img src="./assets/account-icon.svg" width="20" height="20" alt="" />
-            </span>
-          </div>
-        </header>
-
         <div class="hero__content">
           <img class="hero__mark" src="./assets/hero-mark.svg" width="45" height="42" alt="" />
-          <h1 id="hero-title">
+          <h1 id="hero-title" aria-label="짙은 연기 속, 나를 각인시키는 향의 밀도">
             <span>짙은 연기 속,</span>
             <span>나를 각인시키는 <strong>향의 밀도</strong></span>
           </h1>
@@ -41,6 +41,7 @@
 
         <p class="hero__caption">HAUTE PERFUMERY · K-HERITAGE</p>
       </section>
+      </div>
 
       <section class="story" aria-labelledby="story-title">
         <div class="story__canvas">
@@ -66,8 +67,22 @@
           />
 
           <div class="story__detail">
-            <h3>세 가지 밀도, 각기 다른 향의 깊이</h3>
-            <p>맑고 산뜻한 1마패부터 묵직한 3마패까지, 순간에 어울리는 향의 깊이를 선택</p>
+            <div class="story__detail-item">
+              <h3>세 가지 밀도, 각기 다른 향의 깊이</h3>
+              <div class="story__detail-line"><p>맑고 산뜻한 1마패부터 묵직한 3마패까지, 순간에 어울리는 향의 깊이를 선택</p></div>
+            </div>
+            <div class="story__detail-item">
+              <h3>겹칠수록 새로워지는 잔향</h3>
+              <div class="story__detail-line"><p>서로 다른 두 향을 겹쳐, 오직 나만의 시그니처 잔향을 완성</p></div>
+            </div>
+            <div class="story__detail-item">
+              <h3>한국 자연에서 찾은 향</h3>
+              <div class="story__detail-line"><p>유자와 솔잎, 백단 등 한국 자연의 소재에서 발견한 향을 섬세하게 담다</p></div>
+            </div>
+            <div class="story__detail-item">
+              <h3>조선 마패를 닮은 오브제</h3>
+              <div class="story__detail-line"><p>마패의 상징과 결착 디테일을 현대적으로 재해석해, 전통의 품격을 일상에 담다</p></div>
+            </div>
           </div>
 
           <img
@@ -89,7 +104,9 @@
         </div>
       </section>
 
-      <section class="process" aria-labelledby="process-title">
+      <div class="section-bridge section-bridge--story-process" aria-hidden="true"><div class="section-bridge__light" data-header-tone="light"></div></div>
+
+      <section class="process" data-header-tone="light" aria-labelledby="process-title">
         <div class="process__canvas">
           <img class="process__background process__background--top" src="./assets/process-background.png" alt="" aria-hidden="true" />
           <img class="process__background process__background--bottom" src="./assets/process-background.png" alt="" aria-hidden="true" loading="lazy" />
@@ -99,19 +116,25 @@
             <p>한반도 청정 산지의 원료 확인부터 향의 손실을 줄이는 저온 추출 연구, 알코올을 다스리는 숙성까지 밀도가 향을 짓는 정직한 순서입니다.</p>
           </div>
 
-          <img class="process__photo process__photo--natural" src="./assets/process-natural-ingredients.png" width="471" height="627" alt="나뭇잎에서 떨어지는 물방울" loading="lazy" />
+          <div class="process__photo-frame process__photo-frame--natural">
+            <img class="process__photo" src="./assets/process-natural-ingredients.png" width="471" height="627" alt="나뭇잎에서 떨어지는 물방울" loading="lazy" />
+          </div>
           <div class="process__text process__text--natural">
             <h3>자연 원료 채취</h3>
             <p>하동 청유자, 지리산 솔잎, 남원 홍화 등 한반도 청정 산지에서 최적의 원료를 확인하고 수급합니다.</p>
           </div>
 
-          <img class="process__photo process__photo--extraction" src="./assets/process-cold-extraction.png" width="469" height="666" alt="추출액이 천천히 떨어지는 모습" loading="lazy" />
+          <div class="process__photo-frame process__photo-frame--extraction">
+            <img class="process__photo" src="./assets/process-cold-extraction.png" width="469" height="666" alt="추출액이 천천히 떨어지는 모습" loading="lazy" />
+          </div>
           <div class="process__text process__text--extraction">
             <h3>향 보존 저온 추출 연구</h3>
             <p>열에 의한 향 분자 파괴와 변색을 최소화하기 위해 비가열 저온 추출 공정을 연구하고 설계합니다.</p>
           </div>
 
-          <img class="process__photo process__photo--aging" src="./assets/process-aging.png" width="471" height="674" alt="유리 용기 속에서 숙성 중인 향료" loading="lazy" />
+          <div class="process__photo-frame process__photo-frame--aging">
+            <img class="process__photo" src="./assets/process-aging.png" width="471" height="674" alt="유리 용기 속에서 숙성 중인 향료" loading="lazy" />
+          </div>
           <div class="process__text process__text--aging">
             <h3>안정화 및 저온 숙성</h3>
             <p>알코올의 날카로운 자극을 다스리고 원료 본연의 잔향이 깊게 배어들도록 충분한 숙성 기간을 거칩니다.</p>
@@ -129,7 +152,8 @@
           </div>
 
           <div class="scent-system__gallery">
-            <div class="scent-system__cards">
+            <div class="scent-system__cards" data-active="1">
+              <div class="scent-system__tier scent-system__tier--one is-active" data-tier="1">
               <article class="scent-system__card" aria-labelledby="scent-yuja-title">
                 <div class="scent-system__card-copy">
                   <p class="scent-system__card-index">1 마 패 · 香</p>
@@ -142,20 +166,70 @@
                 </div>
                 <img class="scent-system__card-image" src="./메인 이미지/Frame 187.png" width="756" height="613" alt="유자와 솔잎" loading="lazy" />
               </article>
-              <img class="scent-system__preview" src="./assets/section4-preview-two.png" width="87" height="613" alt="" aria-hidden="true" loading="lazy" />
-              <img class="scent-system__preview" src="./assets/section4-preview-three.png" width="94" height="613" alt="" aria-hidden="true" loading="lazy" />
+                <button class="scent-system__sliver scent-system__sliver--one" type="button" aria-label="1마패 보기"><img src="./assets/scent-one-preview-source.png" width="1040" height="1000" alt="" loading="lazy" /></button>
+              </div>
+              <div class="scent-system__tier scent-system__tier--two" data-tier="2">
+                <article class="scent-system__card scent-system__card--rows" aria-labelledby="scent-redpine-title">
+                  <div class="scent-system__card-copy">
+                    <p class="scent-system__card-index">2 마 패 · 香</p>
+                    <div class="scent-system__card-rows">
+                      <div class="scent-system__card-group scent-system__card-group--title">
+                        <h3 id="scent-redpine-title" aria-label="적송 홍화"><span aria-hidden="true">적<br />송<br />&nbsp;<br />홍<br />화</span></h3>
+                        <p class="scent-system__row-tagline" aria-label="분위기 전환 &amp; 포인트 착향"><span aria-hidden="true">분<br />위<br />기<br />&nbsp;<br />전<br />환<br />&nbsp;<br />&amp;<br />&nbsp;<br />포<br />인<br />트<br />&nbsp;<br />착<br />향</span></p>
+                      </div>
+                      <div class="scent-system__card-group scent-system__card-group--copy">
+                        <p class="scent-system__row-text" aria-label="화사하고 깊은 향·따뜻한 우디의 조화"><span aria-hidden="true">화<br />사<br />하<br />고<br />&nbsp;<br />깊<br />은<br />&nbsp;<br />향<br />·<br />따<br />뜻<br />한<br />&nbsp;<br />우<br />디<br />의<br />&nbsp;<br />조<br />화</span></p>
+                        <p class="scent-system__row-text" aria-label="늦은 오후·저녁 약속·분위기를 더하는 향"><span aria-hidden="true">늦<br />은<br />&nbsp;<br />오<br />후<br />·<br />저<br />녁<br />&nbsp;<br />약<br />속<br />·<br />분<br />위<br />기<br />를<br />&nbsp;<br />더<br />하<br />는<br />&nbsp;<br />향</span></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="scent-system__card-media" style="--media-top: -9.3%; --media-bottom: -9.3%;">
+                    <img src="./assets/scent-two-image.png" width="1082" height="1082" alt="홍화 꽃과 솔방울" loading="lazy" />
+                  </div>
+                </article>
+                <button class="scent-system__sliver" type="button" aria-label="2마패 보기"><img src="./assets/section4-preview-two.png" width="87" height="613" alt="" loading="lazy" /></button>
+              </div>
+              <div class="scent-system__tier scent-system__tier--three" data-tier="3">
+                <article class="scent-system__card scent-system__card--rows" aria-labelledby="scent-sandal-title">
+                  <div class="scent-system__card-copy">
+                    <p class="scent-system__card-index">3 마 패 · 香</p>
+                    <div class="scent-system__card-rows">
+                      <div class="scent-system__card-group scent-system__card-group--title">
+                        <h3 id="scent-sandal-title" aria-label="백단 묵향"><span aria-hidden="true">백<br />단<br />&nbsp;<br />묵<br />향</span></h3>
+                        <p class="scent-system__row-tagline" aria-label="고요한 시간 &amp; 깊은 착향"><span aria-hidden="true">고<br />요<br />한<br />&nbsp;<br />시<br />간<br />&nbsp;<br />&amp;<br />&nbsp;<br />깊<br />은<br />&nbsp;<br />착<br />향</span></p>
+                      </div>
+                      <div class="scent-system__card-group scent-system__card-group--copy">
+                        <p class="scent-system__row-text" aria-label="묵직하고 은은한 향·오래 머무는 잔향"><span aria-hidden="true">묵<br />직<br />하<br />고<br />&nbsp;<br />은<br />은<br />한<br />&nbsp;<br />향<br />·<br />오<br />래<br />&nbsp;<br />머<br />무<br />는<br />&nbsp;<br />잔<br />향</span></p>
+                        <p class="scent-system__row-text" aria-label="조용한 저녁·사색의 공간·깊이 있는 향"><span aria-hidden="true">조<br />용<br />한<br />&nbsp;<br />저<br />녁<br />·<br />사<br />색<br />의<br />&nbsp;<br />공<br />간<br />·<br />깊<br />이<br />&nbsp;<br />있<br />는<br />&nbsp;<br />향</span></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="scent-system__card-media" style="--media-top: -7.01%; --media-bottom: -11.58%;">
+                    <img src="./assets/scent-three-image.png" width="1082" height="1082" alt="백단 나무 조각과 먹" loading="lazy" />
+                  </div>
+                </article>
+                <button class="scent-system__sliver" type="button" aria-label="3마패 보기"><img src="./assets/section4-preview-three.png" width="94" height="613" alt="" loading="lazy" /></button>
+              </div>
             </div>
-            <div class="scent-system__indicators" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="scent-system__indicators" role="group" aria-label="마패 단계 선택"><button type="button" aria-label="1마패" aria-pressed="true"></button><button type="button" aria-label="2마패" aria-pressed="false"></button><button type="button" aria-label="3마패" aria-pressed="false"></button></div>
             <p class="scent-system__note">* 발향 지속 시간 및 체감 잔향은 개인의 체온, 피부 유수분 상태, 분사 위치 및 계절 환경에 따라 차이가 있을 수 있습니다.</p>
           </div>
         </div>
       </section>
 
-      <section class="mapea-feature" aria-labelledby="mapea-feature-title">
+      <div class="mapea-stack">
+      <section class="mapea-feature" data-header-tone="light" aria-labelledby="mapea-feature-title">
         <div class="mapea-feature__canvas">
           <div class="mapea-feature__visual">
-            <img src="./메인 이미지/1마패.png" width="1040" height="1000" alt="청유자와 솔잎 곁에 놓인 초록색 밀도 1마패 향수" loading="lazy" />
-            <div class="mapea-feature__indicators" aria-hidden="true"><span></span><span></span></div>
+            <div class="mapea-feature__slides">
+              <div class="mapea-feature__slide">
+                <img src="./메인 이미지/1마패.png" width="1040" height="1000" alt="청유자와 솔잎 곁에 놓인 초록색 밀도 1마패 향수" loading="lazy" />
+              </div>
+              <div class="mapea-feature__slide mapea-feature__slide--ingredient mapea-feature__slide--one" aria-hidden="true">
+                <img src="./assets/mapea-one-ingredient.png" alt="반으로 자른 청유자와 솔잎" loading="lazy" />
+              </div>
+            </div>
+            <div class="mapea-feature__indicators" role="group" aria-label="이미지 선택"><button type="button" aria-label="향수 이미지" aria-pressed="true"></button><button type="button" aria-label="원료 이미지" aria-pressed="false"></button></div>
           </div>
 
           <div class="mapea-feature__details">
@@ -179,7 +253,7 @@
         </div>
       </section>
 
-      <section class="mapea-feature mapea-feature--second" aria-labelledby="mapea-second-title">
+      <section class="mapea-feature mapea-feature--second" data-header-tone="light" aria-labelledby="mapea-second-title">
         <div class="mapea-feature__canvas">
           <div class="mapea-feature__details">
             <img class="mapea-feature__artwork" src="./메인 이미지/c3676327-abc7-4a64-8388-a005cb346097 1.png" width="879" height="1000" alt="" aria-hidden="true" loading="lazy" />
@@ -201,17 +275,31 @@
           </div>
 
           <div class="mapea-feature__visual">
-            <img src="./메인 이미지/0930-5.png" width="1536" height="1024" alt="바위와 솔가지 사이에 놓인 갈색 밀도 2마패 향수" loading="lazy" />
-            <div class="mapea-feature__indicators" aria-hidden="true"><span></span><span></span></div>
+            <div class="mapea-feature__slides">
+              <div class="mapea-feature__slide">
+                <img src="./메인 이미지/0930-5.png" width="1536" height="1024" alt="바위와 솔가지 사이에 놓인 갈색 밀도 2마패 향수" loading="lazy" />
+              </div>
+              <div class="mapea-feature__slide mapea-feature__slide--ingredient mapea-feature__slide--two" aria-hidden="true">
+                <img src="./assets/mapea-two-ingredient.png" alt="홍화 꽃과 솔잎" loading="lazy" />
+              </div>
+            </div>
+            <div class="mapea-feature__indicators" role="group" aria-label="이미지 선택"><button type="button" aria-label="향수 이미지" aria-pressed="true"></button><button type="button" aria-label="원료 이미지" aria-pressed="false"></button></div>
           </div>
         </div>
       </section>
 
-      <section class="mapea-feature mapea-feature--third" aria-labelledby="mapea-third-title">
+      <section class="mapea-feature mapea-feature--third" data-header-tone="light" aria-labelledby="mapea-third-title">
         <div class="mapea-feature__canvas">
           <div class="mapea-feature__visual">
-            <img src="./메인 이미지/0928-1.png" alt="나무와 돌 사이에 놓인 밀도 3마패 백단 묵향 향수" loading="lazy" />
-            <div class="mapea-feature__indicators" aria-hidden="true"><span></span><span></span></div>
+            <div class="mapea-feature__slides">
+              <div class="mapea-feature__slide">
+                <img src="./메인 이미지/0928-1.png" alt="나무와 돌 사이에 놓인 밀도 3마패 백단 묵향 향수" loading="lazy" />
+              </div>
+              <div class="mapea-feature__slide mapea-feature__slide--ingredient mapea-feature__slide--three" aria-hidden="true">
+                <img src="./assets/mapea-three-ingredient.png" alt="백단 나무 조각과 먹물" loading="lazy" />
+              </div>
+            </div>
+            <div class="mapea-feature__indicators" role="group" aria-label="이미지 선택"><button type="button" aria-label="향수 이미지" aria-pressed="true"></button><button type="button" aria-label="원료 이미지" aria-pressed="false"></button></div>
           </div>
 
           <div class="mapea-feature__details">
@@ -252,8 +340,9 @@
           </div>
         </div>
       </section>
+      </div>
 
-      <section class="discovery" aria-labelledby="discovery-title">
+      <section class="discovery" data-header-tone="light" aria-labelledby="discovery-title">
         <div class="discovery__canvas">
           <img class="discovery__landscape" src="./메인 이미지/MILDO_landscape_Figma_editable 1.svg" alt="" aria-hidden="true" loading="lazy" />
           <div class="discovery__intro">
@@ -270,7 +359,7 @@
         </div>
       </section>
 
-      <section class="fragrance-story" aria-labelledby="fragrance-story-title">
+      <section class="fragrance-story" data-header-tone="light" aria-labelledby="fragrance-story-title">
         <div class="fragrance-story__canvas">
           <img class="fragrance-story__landscape" src="./메인 이미지/MILDO_landscape_Figma_editable 1.svg" alt="" aria-hidden="true" loading="lazy" />
           <div class="fragrance-story__trio" aria-label="세 가지 마패 향">
@@ -354,7 +443,167 @@
           </article>
         </div>
       </section>
+
+      <section class="lifestyle" aria-labelledby="lifestyle-title">
+        <div class="lifestyle__canvas">
+          <div class="lifestyle__stage">
+            <img class="lifestyle__orchid lifestyle__orchid--pink" src="./assets/lifestyle-orchid-pink.png" alt="" aria-hidden="true" loading="lazy" />
+            <img class="lifestyle__orchid lifestyle__orchid--butterfly" src="./assets/lifestyle-orchid-butterfly.png" alt="" aria-hidden="true" loading="lazy" />
+            <img class="lifestyle__orchid lifestyle__orchid--right" src="./assets/lifestyle-orchid-right.png" alt="" aria-hidden="true" loading="lazy" />
+
+            <header class="lifestyle__heading">
+              <h2 id="lifestyle-title">
+                <span class="lifestyle__title-small">향을 넘어,</span>
+                <span class="lifestyle__title-large">일상에 머무는 밀도</span>
+              </h2>
+              <div class="lifestyle__divider">
+                <span class="lifestyle__line" aria-hidden="true"></span>
+                <ul class="lifestyle__tags" aria-label="밀도의 경험">
+                  <li>調香體驗</li>
+                  <li>膳物包裝</li>
+                  <li>養生儀式</li>
+                </ul>
+                <span class="lifestyle__line" aria-hidden="true"></span>
+              </div>
+            </header>
+
+            <article class="lifestyle__row lifestyle__row--atelier">
+              <div class="lifestyle__media lifestyle__media--atelier">
+                <img src="./assets/lifestyle-atelier.png" alt="한국적인 공간에 향료가 놓인 밀도 프라이빗 아틀리에" loading="lazy" />
+              </div>
+              <div class="lifestyle__copy">
+                <p class="lifestyle__label">PRIVATE ATELIER · 1:1 조향 체험</p>
+                <div class="lifestyle__body">
+                  <div class="lifestyle__text">
+                    <h3>프라이빗 아틀리에</h3>
+                    <p class="lifestyle__description">16가지 향료를 직접 시향하고, 세 단계 마패의 향을 겹쳐 나에게 어울리는 조합을 완성하는 특별한 조향 경험</p>
+                  </div>
+                  <div class="lifestyle__links"><span>예약하기</span><span>향 취향 진단하기</span></div>
+                </div>
+              </div>
+            </article>
+
+            <article class="lifestyle__row lifestyle__row--gift">
+              <div class="lifestyle__copy">
+                <p class="lifestyle__label">GIFT PACKAGING · 전통 선물 포장</p>
+                <div class="lifestyle__body">
+                  <div class="lifestyle__text">
+                    <h3><span class="lifestyle__h-space"> </span><strong>능화창</strong><span class="lifestyle__h-space"> </span><span class="lifestyle__h-light">선물 포장</span></h3>
+                    <p class="lifestyle__description">능화창의 섬세한 문양과 보자기의 단정한 매듭. 향을 건네는 순간에도 한국적인 아름다움과 정성을 담다</p>
+                  </div>
+                  <div class="lifestyle__links"><span>옵션 선택</span></div>
+                </div>
+              </div>
+              <div class="lifestyle__media lifestyle__media--gift">
+                <div class="lifestyle__gift-frame">
+                  <img src="./assets/lifestyle-gift.png" alt="능화창 문양이 새겨진 밀도 선물 상자와 초록색 보자기" loading="lazy" />
+                </div>
+              </div>
+            </article>
+
+            <article class="lifestyle__row lifestyle__row--guasha">
+              <div class="lifestyle__media lifestyle__media--guasha">
+                <img src="./assets/lifestyle-guasha.png" alt="자개 괄사와 롤온 오일, 파우치가 담긴 밀도 기프트 세트" loading="lazy" />
+              </div>
+              <div class="lifestyle__copy">
+                <p class="lifestyle__label">MILDO GUA SHA · 일상의 케어</p>
+                <div class="lifestyle__body">
+                  <div class="lifestyle__text">
+                    <h3>괄사 기프트 세트</h3>
+                    <p class="lifestyle__description">자개 괄사와 롤온 오일, 전용 파우치를 하나에 담았습니다. 향과 손길로 하루를 정돈하는 일상의 작은 리추얼</p>
+                  </div>
+                  <div class="lifestyle__links"><span>기프트 세트 보러가기</span></div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
     </main>
+
+    <footer class="site-footer" id="site-footer">
+      <div class="site-footer__canvas">
+        <div class="site-footer__stage">
+          <div class="site-footer__bottle">
+            <img src="./메인 이미지/4e8dd458-93f9-4646-93dc-5abf907e4da8.png" alt="어둠 속에 놓인 초록색 밀도 향수" loading="lazy" />
+          </div>
+
+          <div class="site-footer__paper" data-header-tone="light">
+            <div class="site-footer__texture site-footer__texture--left" aria-hidden="true"><img src="./assets/footer-paper.png" alt="" loading="lazy" /></div>
+            <div class="site-footer__texture site-footer__texture--right" aria-hidden="true"><img src="./assets/footer-paper.png" alt="" loading="lazy" /></div>
+
+            <div class="site-footer__panel site-footer__panel--moon" aria-hidden="true">
+              <div class="site-footer__panel-flip"><img src="./메인 이미지/8315d1b2-9672-4e9c-9422-a92aa9a89989.png" alt="" loading="lazy" /></div>
+            </div>
+            <div class="site-footer__panel site-footer__panel--door" aria-hidden="true">
+              <img src="./메인 이미지/9b2617d1-7729-4286-bd24-119894786ffe.png" alt="" loading="lazy" />
+            </div>
+            <div class="site-footer__panel site-footer__panel--pine" aria-hidden="true">
+              <img src="./메인 이미지/75b07bbc-9492-41fa-9908-5bfa9d5ef50c.png" alt="" loading="lazy" />
+            </div>
+
+            <p class="site-footer__est">EST. 2026 · HAUTE PERFUMERY OF JOSEON HERITAGE · 밀도 (MILDO)</p>
+
+            <div class="site-footer__poem">
+              <p class="site-footer__hanja" aria-label="밀도">密<br />度</p>
+              <div class="site-footer__poem-cols">
+                <p class="site-footer__poem-main" aria-label="조선의 묵향과 바람, 당신의 하루에 고유한 품격과 서사가 되다">
+                  <span aria-hidden="true">조<br />선<br />의<br />&nbsp;<br />묵<br />향<br />과<br />&nbsp;<br />바<br />람<br />,</span>
+                  <span aria-hidden="true">당<br />신<br />의<br />&nbsp;<br />하<br />루<br />에<br />&nbsp;<br />고<br />유<br />한<br />&nbsp;<br />품<br />격<br />과<br />&nbsp;<br />서<br />사<br />가<br />&nbsp;<br />되<br />다</span>
+                </p>
+                <p class="site-footer__poem-sub" aria-label="복잡한 일상 속에서 나 자신을 증명하는 가장 기품 있는 향의 밀도를 완성해 보세요">
+                  <span aria-hidden="true">복<br />잡<br />한<br />&nbsp;<br />일<br />상<br />&nbsp;<br />속<br />에<br />서<br />&nbsp;<br />나<br />&nbsp;<br />자<br />신<br />을</span>
+                  <span aria-hidden="true">증<br />명<br />하<br />는<br />&nbsp;<br />가<br />장<br />&nbsp;<br />기<br />품<br />&nbsp;<br />있<br />는<br />&nbsp;<br />향<br />의<br />&nbsp;<br />밀<br />도<br />를<br />&nbsp;<br />완<br />성<br />해<br />&nbsp;<br />보<br />세<br />요</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="site-footer__wordmark" aria-hidden="true"><p>MILDO</p></div>
+          </div>
+
+          <div class="site-footer__info">
+            <div class="site-footer__brand">
+              <div class="site-footer__identity">
+                <div class="site-footer__logo">
+                  <img src="./assets/footer-logo.svg" width="74" height="69" alt="" />
+                  <p>MILDO</p>
+                </div>
+                <div class="site-footer__tagline">
+                  <p>짙은 연기 속, 나를 각인시키는 향의 밀도.</p>
+                  <p>조선 암행어사 마패 헤리티지 &amp; 100% 커스텀 레이어링 하우스.</p>
+                  <p>MILDO Haute Perfumery House · Seoul, Korea</p>
+                </div>
+              </div>
+              <span class="site-footer__rule" aria-hidden="true"></span>
+            </div>
+            <nav class="site-footer__links" aria-label="하단 메뉴">
+              <div class="site-footer__col site-footer__col--collection">
+                <h2>마패 컬렉션</h2>
+                <a href="#scent-system-title">1마패 · 일상 Base (3종)</a>
+                <a href="#mapea-second-title">2마패 · 감성 Point (4종)</a>
+                <a href="#mapea-third-title">3마패 · 시그니처 Master (4종)</a>
+                <a href="#fragrance-story-title">웰니스 오브제 (3종)</a>
+                <a href="#discovery-title">스페셜 기프트 &amp; 킷 (2종)</a>
+              </div>
+              <div class="site-footer__col site-footer__col--brand">
+                <h2>브랜드 &amp; 조향 철학</h2>
+                <a href="#story-title">한국 자연 원료 &amp; 조향 철학</a>
+                <a href="#scent-system-title">밀도 3단계 레이어링 리추얼</a>
+                <a href="#process-title">휴대용 마패 오브제 &amp; 공예</a>
+                <a href="#process-title">안전 조향 &amp; 원료 투명성 기준</a>
+              </div>
+              <div class="site-footer__col site-footer__col--support">
+                <h2>고객 지원 &amp; 서비스</h2>
+                <a href="#discovery-title">19,000원 웰컴 크레딧 디스커버리 킷</a>
+                <a href="#lifestyle-title">밀도 전통 선물 패키징 안내</a>
+                <a href="#lifestyle-title">프라이빗 아틀리에 사전 신청</a>
+                <a href="#lifestyle-title">30초 나만의 마패 향 찾기</a>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </footer>
     <script>
       const story = document.querySelector(".story");
 
@@ -374,6 +623,406 @@
         }, { rootMargin: "0px 0px -10% 0px", threshold: 0 });
 
         story.querySelectorAll(".story__photo").forEach((photo) => photoObserver.observe(photo));
+
+        const storyCanvas = story.querySelector(".story__canvas");
+        const storyDetail = story.querySelector(".story__detail");
+        const storyItems = [...story.querySelectorAll(".story__detail-item")];
+        let storyPinStart = 0;
+        let storyPinDuration = 0;
+        let storyFrame = 0;
+
+        storyItems.forEach((item) => item.setAttribute("aria-hidden", "true"));
+        story.classList.add("story--pin-ready");
+
+        const updateStoryScroll = () => {
+          storyFrame = 0;
+          const progress = Math.max(0, Math.min(1, (window.scrollY - storyPinStart) / storyPinDuration));
+          const revealStart = storyPinStart - window.innerHeight * 0.12;
+          const activeIndex = window.scrollY < revealStart
+            ? -1
+            : Math.min(storyItems.length - 1, Math.floor(progress * storyItems.length));
+
+          storyItems.forEach((item, index) => {
+            const active = index === activeIndex;
+            const line = item.querySelector(".story__detail-line");
+            const paragraph = line.querySelector("p");
+            const segmentProgress = Math.max(0, Math.min(1, progress * storyItems.length - index));
+            const readingProgress = Math.max(0, Math.min(1, (segmentProgress - 0.18) / 0.64));
+            const overflow = window.innerWidth <= 600 ? Math.max(0, paragraph.scrollWidth - line.clientWidth) : 0;
+
+            paragraph.style.setProperty("--story-line-shift", `${-overflow * readingProgress}px`);
+            item.classList.toggle("story__detail-item--active", active);
+            item.setAttribute("aria-hidden", String(!active));
+          });
+        };
+
+        const scheduleStoryScroll = () => {
+          if (!storyFrame) storyFrame = requestAnimationFrame(updateStoryScroll);
+        };
+
+        const refreshStoryPin = () => {
+          storyPinDuration = Math.max(1800, window.innerHeight * 1.1 * storyItems.length);
+          const detailCenter = storyDetail.offsetTop + storyDetail.offsetHeight / 2;
+          const pinTop = window.innerHeight * 0.43 - detailCenter;
+          story.style.setProperty("--story-pin-top", `${pinTop}px`);
+          story.style.height = `${storyCanvas.offsetHeight + storyPinDuration}px`;
+          storyPinStart = story.getBoundingClientRect().top + window.scrollY - pinTop;
+          scheduleStoryScroll();
+        };
+
+        window.addEventListener("scroll", scheduleStoryScroll, { passive: true });
+        window.addEventListener("resize", refreshStoryPin);
+        document.fonts.ready.then(refreshStoryPin);
+        refreshStoryPin();
+      }
+
+      const process = document.querySelector(".process");
+
+      if (process && "IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        process.classList.add("process--motion-ready");
+
+        const processObserver = new IntersectionObserver((entries) => {
+          process.classList.toggle("process--visible", entries[0].isIntersecting);
+        }, { rootMargin: "0px 0px -10% 0px", threshold: 0 });
+        processObserver.observe(process);
+
+        const textObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            entry.target.classList.toggle("process__text--visible", entry.isIntersecting);
+          });
+        }, { rootMargin: "0px 0px -12% 0px", threshold: 0 });
+        process.querySelectorAll(".process__text").forEach((item) => textObserver.observe(item));
+
+        const processPhotoFrames = process.querySelectorAll(".process__photo-frame");
+        let zoomFrame = 0;
+
+        const updateProcessZoom = () => {
+          zoomFrame = 0;
+          const viewportHeight = window.innerHeight;
+
+          processPhotoFrames.forEach((frame) => {
+            const bounds = frame.getBoundingClientRect();
+            const zoomStart = viewportHeight * 0.85;
+            const zoomEnd = viewportHeight * 0.15;
+            const progress = Math.max(0, Math.min(1, (zoomStart - bounds.top) / (zoomStart - zoomEnd)));
+            frame.querySelector(".process__photo").style.setProperty("--process-photo-scale", (0.72 + progress * 0.4).toFixed(3));
+          });
+        };
+
+        const scheduleProcessZoom = () => {
+          if (!zoomFrame) zoomFrame = requestAnimationFrame(updateProcessZoom);
+        };
+
+        window.addEventListener("scroll", scheduleProcessZoom, { passive: true });
+        window.addEventListener("resize", scheduleProcessZoom);
+        scheduleProcessZoom();
+      }
+
+      const scentSystem = document.querySelector(".scent-system");
+
+      if (scentSystem && "IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        scentSystem.classList.add("scent-system--reveal-ready");
+
+        const scentObserver = new IntersectionObserver((entries) => {
+          scentSystem.classList.toggle("scent-system--visible", entries[0].isIntersecting);
+        }, { rootMargin: "0px 0px -10% 0px", threshold: 0 });
+        scentObserver.observe(scentSystem);
+
+        const cardsObserver = new IntersectionObserver((entries) => {
+          scentSystem.classList.toggle("scent-system--cards-visible", entries[0].isIntersecting);
+        }, { rootMargin: "0px 0px -15% 0px", threshold: 0 });
+        cardsObserver.observe(scentSystem.querySelector(".scent-system__cards"));
+      }
+
+      /* ───── 애니메이션: Figma `애니메이션` 섹션 주석 + 요청 반영 ───── */
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const canAnimate = !reduceMotion && "IntersectionObserver" in window;
+      const clamp01 = (value) => Math.max(0, Math.min(1, value));
+
+      if (canAnimate) document.documentElement.classList.add("motion");
+
+      // 탑바: 밝은 배경 위에 있으면 글자·아이콘을 어둡게
+      const siteHeader = document.querySelector(".site-header");
+      const lightAreas = [...document.querySelectorAll('[data-header-tone="light"]')];
+      let headerFrame = 0;
+
+      const updateHeaderTone = () => {
+        headerFrame = 0;
+        const line = siteHeader.offsetHeight / 2;
+        const onLight = lightAreas.some((area) => {
+          const bounds = area.getBoundingClientRect();
+          return bounds.top <= line && bounds.bottom >= line;
+        });
+        siteHeader.classList.toggle("site-header--dark", onLight);
+      };
+
+      if (siteHeader) {
+        const scheduleHeaderTone = () => { if (!headerFrame) headerFrame = requestAnimationFrame(updateHeaderTone); };
+        window.addEventListener("scroll", scheduleHeaderTone, { passive: true });
+        window.addEventListener("resize", scheduleHeaderTone);
+        updateHeaderTone();
+      }
+
+      // 1섹션: 커튼형 장면 전환(첫 화면) + 스크롤하면 제목 글자가 하나씩 나타남
+      const heroPin = document.querySelector(".hero-pin");
+      const hero = document.querySelector(".hero");
+      const heroChars = [];
+
+      if (canAnimate && hero) {
+        const heroTitle = hero.querySelector("h1");
+        const splitText = (node) => {
+          [...node.childNodes].forEach((child) => {
+            if (child.nodeType === Node.TEXT_NODE) {
+              const fragment = document.createDocumentFragment();
+              [...child.textContent].forEach((char) => {
+                if (char.trim() === "") {
+                  fragment.append(char);
+                  return;
+                }
+                const span = document.createElement("span");
+                span.className = "hero__char";
+                span.setAttribute("aria-hidden", "true");
+                span.textContent = char;
+                heroChars.push(span);
+                fragment.append(span);
+              });
+              child.replaceWith(fragment);
+            } else if (child.nodeType === Node.ELEMENT_NODE) {
+              splitText(child);
+            }
+          });
+        };
+        splitText(heroTitle);
+
+        const curtains = ["left", "right"].map((side) => {
+          const curtain = document.createElement("div");
+          curtain.className = `hero__curtain hero__curtain--${side}`;
+          curtain.setAttribute("aria-hidden", "true");
+          hero.append(curtain);
+          return curtain;
+        });
+
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          hero.classList.add("hero--open");
+          setTimeout(() => curtains.forEach((curtain) => curtain.remove()), 1700);
+        }));
+      }
+
+      // 공통 등장 효과 (IntersectionObserver)
+      const revealTargets = [
+        [".discovery__intro h2", "text"],
+        [".discovery__tags", "text", 250],
+        [".fragrance-story__rail", "slide-right"],
+        [".fragrance-story__card", "slide-right", 750, -250],
+        [".lifestyle__heading", "text"],
+        [".lifestyle__row--atelier", "slide-left"],
+        [".lifestyle__row--gift", "slide-right"],
+        [".lifestyle__row--guasha", "slide-left"],
+        [".site-footer__poem", "fade"],
+        [".site-footer__panel", "fade", 250, 250],
+        [".site-footer__wordmark", "fade", 1000],
+        [".site-footer__est", "fade", 1200],
+        [".site-footer__info", "fade-up"],
+      ];
+
+      if (canAnimate) {
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => entry.target.classList.toggle("is-revealed", entry.isIntersecting));
+        }, { rootMargin: "0px 0px -12% 0px", threshold: 0 });
+
+        revealTargets.forEach(([selector, type, delay = 0, step = 0]) => {
+          document.querySelectorAll(selector).forEach((element, index) => {
+            element.dataset.reveal = type;
+            element.style.setProperty("--reveal-delay", `${delay + index * step}ms`);
+            revealObserver.observe(element);
+          });
+        });
+
+        // 5~7섹션: 카드가 화면 중간까지 올라왔을 때 왼쪽 칸은 왼쪽에서, 오른쪽 칸은 오른쪽에서 들어온다
+        const halfwayObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            entry.target.querySelectorAll("[data-reveal]").forEach((column) => column.classList.toggle("is-revealed", entry.isIntersecting));
+            entry.target.dispatchEvent(new CustomEvent(entry.isIntersecting ? "mapea:shown" : "mapea:hidden"));
+          });
+        }, { rootMargin: "0px 0px -50% 0px", threshold: 0 });
+
+        document.querySelectorAll(".mapea-feature__canvas").forEach((canvas) => {
+          canvas.firstElementChild.dataset.reveal = "slide-left";
+          canvas.lastElementChild.dataset.reveal = "slide-right";
+          canvas.lastElementChild.style.setProperty("--reveal-delay", "120ms");
+          halfwayObserver.observe(canvas);
+        });
+
+        // 10섹션: 화면 중간쯤 오면 위 이미지가 차례로 나타나고, 위 이미지가 절반쯤 나타났을 때 아래 제품 이미지가 차례로 나타난다
+        const gallery = document.querySelector(".product-gallery");
+        if (gallery) {
+          const scenes = [...gallery.querySelectorAll(".product-gallery__scene")];
+          const products = [...gallery.querySelectorAll(".product-gallery__product")];
+          const step = 200;
+          const scenesHalfway = ((scenes.length - 1) * step + 1100) / 2;
+          scenes.forEach((scene, index) => {
+            scene.dataset.reveal = "fade-up";
+            scene.style.setProperty("--reveal-delay", `${index * step}ms`);
+          });
+          products.forEach((product, index) => {
+            product.dataset.reveal = "fade-up";
+            product.style.setProperty("--reveal-delay", `${scenesHalfway + index * step}ms`);
+          });
+          const galleryItems = [...scenes, ...products];
+          // 화면 중간선에 닿으면 순서대로 나타남
+          new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) galleryItems.forEach((element) => element.classList.add("is-revealed"));
+          }, { rootMargin: "0px 0px -50% 0px", threshold: 0 }).observe(gallery);
+          // 섹션이 화면 아래로 완전히 내려갔을 때만 초기화 → 위에서 다시 내려오면 처음부터 다시 재생
+          new IntersectionObserver((entries) => {
+            const entry = entries[0];
+            if (!entry.isIntersecting && entry.boundingClientRect.top > 0) galleryItems.forEach((element) => element.classList.remove("is-revealed"));
+          }, { threshold: 0 }).observe(gallery);
+        }
+      }
+
+      // 4섹션: 1·2·3마패가 항상 이 순서로 놓이고, 펼친 카드만 넓어진다(나머지는 좌우 너비가 줄어 접힘).
+      //        접힌 카드를 누르면 펼쳐지고, 펼친 2·3마패를 다시 누르면 처음 모습(1마패 펼침)으로 돌아간다.
+      const scentCards = document.querySelector(".scent-system__cards");
+
+      if (scentCards) {
+        const tiers = [...scentCards.querySelectorAll(".scent-system__tier")];
+        const dots = [...document.querySelectorAll(".scent-system__indicators button")];
+
+        const setTier = (tierNumber) => {
+          scentCards.dataset.active = String(tierNumber);
+          tiers.forEach((tier, index) => {
+            const active = index + 1 === tierNumber;
+            tier.classList.toggle("is-active", active);
+            tier.querySelector(".scent-system__card").inert = !active;
+            tier.querySelector(".scent-system__sliver").setAttribute("aria-expanded", String(active));
+          });
+          dots.forEach((dot, index) => dot.setAttribute("aria-pressed", String(index + 1 === tierNumber)));
+        };
+
+        const toggleTier = (tierNumber) => {
+          const current = Number(scentCards.dataset.active);
+          setTier(current === tierNumber && tierNumber !== 1 ? 1 : tierNumber);
+        };
+
+        tiers.forEach((tier, index) => {
+          tier.querySelector(".scent-system__sliver").addEventListener("click", () => toggleTier(index + 1));
+          if (index > 0) tier.querySelector(".scent-system__card").addEventListener("click", () => toggleTier(index + 1));
+        });
+        dots.forEach((dot, index) => dot.addEventListener("click", () => toggleTier(index + 1)));
+        setTier(1);
+      }
+
+      // 5~7섹션: 제품 이미지 ↔ 원료 이미지(Figma `N마패 시그니처-2`) 슬라이드
+      document.querySelectorAll(".mapea-feature__visual").forEach((visual) => {
+        const canvas = visual.closest(".mapea-feature__canvas");
+        const slides = [...visual.querySelectorAll(".mapea-feature__slide")];
+        const buttons = [...visual.querySelectorAll(".mapea-feature__indicators button")];
+        let current = 1;
+        let timer = 0;
+        let shown = !canAnimate;
+        let paused = false;
+        let startX = null;
+
+        const setSlide = (slideNumber) => {
+          current = (slideNumber - 1 + slides.length) % slides.length + 1;
+          visual.dataset.slide = String(current);
+          visual.style.setProperty("--slide", String(current));
+          slides.forEach((slide, index) => slide.setAttribute("aria-hidden", String(index + 1 !== current)));
+          buttons.forEach((button, index) => button.setAttribute("aria-pressed", String(index + 1 === current)));
+        };
+
+        const schedule = (delay = 4000) => {
+          clearTimeout(timer);
+          if (canAnimate && shown && !paused) {
+            timer = setTimeout(() => { setSlide(current + 1); schedule(); }, delay);
+          }
+        };
+
+        buttons.forEach((button, index) => button.addEventListener("click", () => { setSlide(index + 1); schedule(); }));
+
+        // 마우스·터치로 끌어서 넘기기: 끄는 동안 이미지가 손을 따라오고, 놓으면 다음/이전 이미지로
+        const track = visual.querySelector(".mapea-feature__slides");
+        let dragId = null;
+        let dragX = 0;
+        visual.querySelectorAll("img").forEach((img) => { img.draggable = false; });
+        track.addEventListener("dragstart", (event) => event.preventDefault());
+        track.addEventListener("pointerdown", (event) => {
+          if (event.button !== 0) return;
+          dragId = event.pointerId;
+          startX = event.clientX;
+          dragX = 0;
+          track.setPointerCapture(dragId);
+          visual.classList.add("is-dragging");
+        });
+        track.addEventListener("pointermove", (event) => {
+          if (event.pointerId !== dragId) return;
+          dragX = event.clientX - startX;
+          const atEdge = (current === 1 && dragX > 0) || (current === slides.length && dragX < 0);
+          visual.style.setProperty("--drag", `${atEdge ? dragX * .3 : dragX}px`);
+        });
+        const endDrag = (event) => {
+          if (event.pointerId !== dragId) return;
+          dragId = null;
+          visual.classList.remove("is-dragging");
+          visual.style.setProperty("--drag", "0px");
+          const threshold = Math.min(120, visual.offsetWidth * .12);
+          if (dragX <= -threshold && current < slides.length) setSlide(current + 1);
+          else if (dragX >= threshold && current > 1) setSlide(current - 1);
+          schedule();
+        };
+        track.addEventListener("pointerup", endDrag);
+        track.addEventListener("pointercancel", endDrag);
+        visual.addEventListener("pointerenter", () => { paused = true; schedule(); });
+        visual.addEventListener("pointerleave", () => { paused = false; schedule(); });
+        canvas.addEventListener("mapea:shown", () => { shown = true; schedule(1500); });
+        canvas.addEventListener("mapea:hidden", () => { shown = false; schedule(); setSlide(1); });
+
+        setSlide(1);
+      });
+
+      // 스크롤 연동: 히어로 글자 · 카드 쌓기 · 라이프스타일 풀 스크린 확장
+      if (canAnimate) {
+        const stackSections = [...document.querySelectorAll(".mapea-stack > .mapea-feature")];
+        const expandSections = [...document.querySelectorAll(".lifestyle__stage")];
+        let scrollFrame = 0;
+
+        const updateScrollMotion = () => {
+          scrollFrame = 0;
+          const viewport = window.innerHeight;
+
+          if (heroPin && heroChars.length) {
+            const distance = Math.max(1, heroPin.offsetHeight - hero.offsetHeight);
+            const progress = clamp01(-heroPin.getBoundingClientRect().top / (distance * .85));
+            const spread = 6;
+            heroChars.forEach((span, index) => {
+              const local = clamp01((progress * (heroChars.length + spread) - index) / spread);
+              span.style.setProperty("--char-progress", local.toFixed(3));
+            });
+          }
+
+          stackSections.forEach((section, index) => {
+            section.style.setProperty("--stick-top", `${Math.min(0, viewport - section.offsetHeight)}px`);
+            const next = stackSections[index + 1];
+            const progress = next ? clamp01(1 - next.getBoundingClientRect().top / viewport) : 0;
+            section.style.setProperty("--stack-progress", progress.toFixed(3));
+          });
+
+          expandSections.forEach((element) => {
+            const top = element.getBoundingClientRect().top;
+            const progress = clamp01((viewport - top) / (viewport * .85));
+            element.style.setProperty("--expand-shrink", (1 - progress).toFixed(3));
+          });
+
+        };
+
+        const scheduleScrollMotion = () => {
+          if (!scrollFrame) scrollFrame = requestAnimationFrame(updateScrollMotion);
+        };
+
+        window.addEventListener("scroll", scheduleScrollMotion, { passive: true });
+        window.addEventListener("resize", scheduleScrollMotion);
+        updateScrollMotion();
       }
     </script>
   </body>
