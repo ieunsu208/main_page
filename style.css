@@ -160,7 +160,7 @@ body { margin: 0; background: #080a09; }
   display: flex;
   align-items: center;
   justify-self: center;
-  gap: 8px;
+  gap: 20px;
   color: #fff;
   font: 400 13.5px / normal "Pretendard", Arial, sans-serif;
   white-space: nowrap;
@@ -170,17 +170,17 @@ body { margin: 0; background: #080a09; }
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 90px;
+  min-width: 90px;
   height: 32px;
-  padding: 8px 10px;
+  padding: 8px 16px;
 }
 
 .site-nav a { color: inherit; text-decoration: none; }
 
-/* 메뉴 hover: Figma `탑바 hover`(2230:544) — 해당 칸에 남색 배경, 글자는 흰색 */
+/* 흰 글씨일 때 메뉴 hover: Figma `탑바 hover-w`(2230:560) — 해당 칸에 흰 배경, 남색 글자 */
 .site-nav > * { transition: background-color 300ms ease, color 300ms ease; }
 .site-nav > *:hover,
-.site-nav > a:focus-visible { background: #1e2128; color: #fff; }
+.site-nav > a:focus-visible { background: #fff; color: #1e2128; }
 .site-nav a:focus-visible,
 .site-logo:focus-visible { outline: 2px solid #fff; outline-offset: 6px; }
 
@@ -402,8 +402,8 @@ body { margin: 0; background: #080a09; }
    기준점은 첫 문구 위치(x140, y1053, 폭 516). 여백 %는 이 폭(516px)에 대한 비율 */
 @media (min-width: 1101px) {
   .story--pin-ready .story__detail-item { justify-self: start; }
-  .story--pin-ready .story__detail-item:nth-child(2) { width: 75.775%; margin: 29.457% 0 0 87.403%; }  /* 2-2: x591 y1205 폭391 */
-  .story--pin-ready .story__detail-item:nth-child(3) { width: 91.279%; }                                                    /* 2-3: x140 y1053 폭471 */
+  .story--pin-ready .story__detail-item:nth-child(2) { width: 75.775%; margin: 0 0 0 87.403%; }        /* 2-2: x591 y1053 폭391 */
+  .story--pin-ready .story__detail-item:nth-child(3) { width: 91.279%; margin: 29.457% 0 0 0; }        /* 2-3: x140 y1205 폭471 */
   .story--pin-ready .story__detail-item:nth-child(4) { width: 102.326%; margin: 29.457% 0 0 60.853%; } /* 2-4: x454 y1205 폭528 */
   .story--pin-ready .story__detail-item:nth-child(3) h3,
   .story--pin-ready .story__detail-item:nth-child(4) h3 { letter-spacing: 0; }
@@ -1176,7 +1176,7 @@ body { margin: 0; background: #080a09; }
   }
   .site-logo { font-size: 18px; }
   .site-nav { gap: 2px; font-size: 11px; }
-  .site-nav > * { width: auto; padding: 8px 6px; }
+  .site-nav > * { min-width: 0; padding: 8px 6px; }
   .hero h1 { font-size: clamp(25px, 6vw, 36px); }
   .hero__caption { bottom: 28px; font-size: 10px; }
 
@@ -2227,9 +2227,9 @@ body { margin: 0; background: #080a09; }
 .site-header--dark .site-logo { color: #1b1b1b; }
 .site-header--dark .site-nav { color: #1e2128; }
 
-/* 어두운 글씨일 때 메뉴 hover: Figma `탑바 hover-w`(2230:551) — 해당 칸에 흰 배경, 남색 글자 */
+/* 남색 글씨일 때 메뉴 hover: Figma `탑바 hover`(2230:574) — 해당 칸에 남색 배경, 흰 글자 */
 .site-header--dark .site-nav > *:hover,
-.site-header--dark .site-nav > a:focus-visible { background: #fff; color: #1e2128; }
+.site-header--dark .site-nav > a:focus-visible { background: #1e2128; color: #fff; }
 .site-header--dark .site-logo img,
 .site-header--dark .site-account img { filter: brightness(0) opacity(.88); }
 .site-header--dark .site-nav a:focus-visible,
