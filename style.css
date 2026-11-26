@@ -373,33 +373,6 @@ body { margin: 0; background: #080a09; }
   white-space: normal;
 }
 
-/* 2섹션(어두운 남색) → 3섹션(밝은 한지)을 자연스럽게 잇는 그라데이션 띠 (부드러운 가속 곡선으로 중간이 탁해지지 않게) */
-.section-bridge--story-process {
-  position: relative;
-  height: clamp(140px, 16.6667vw, 320px);
-  background: linear-gradient(
-    180deg,
-    #1e2229 0%,
-    rgb(43, 47, 53) 15%,
-    rgb(76, 79, 84) 30%,
-    rgb(121, 122, 125) 45%,
-    rgb(168, 168, 169) 60%,
-    rgb(210, 209, 207) 75%,
-    rgb(237, 235, 233) 90%,
-    #f3f1ee 100%
-  );
-}
-
-/* 띠의 아래쪽 55%(중간 회색부터)는 밝은 배경으로 보고 탑바 글자를 어둡게 바꾼다 */
-.section-bridge__light {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 55%;
-  pointer-events: none;
-}
-
 .process {
   overflow: hidden;
   background: #f3f1ee;
@@ -423,19 +396,6 @@ body { margin: 0; background: #080a09; }
 .process--motion-ready.process--visible .process__canvas {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* 위 그라데이션 띠와 한지 질감이 이어지는 경계선을 부드럽게 */
-.process__canvas::after {
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: clamp(60px, 6.25vw, 120px);
-  background: linear-gradient(#f3f1ee, rgba(243, 241, 238, 0));
-  content: "";
-  pointer-events: none;
 }
 
 .process__background {
