@@ -250,23 +250,23 @@ body { margin: 0; background: #080a09; }
   transform: translateY(0);
 }
 
-/* 2섹션 제목과 아래 소개 문단: 왼쪽에서 오른쪽으로 슬라이드하며 나타남(문단은 제목 뒤 0.25초) */
-.story--reveal-ready .story__intro h2,
-.story--reveal-ready .story__intro p {
+/* 2섹션 제목과 아래 소개 문단: 처음부터 숨겨 두었다가, 문구가 화면에 들어오면 왼쪽에서 오른쪽으로 슬라이드하며 나타남(문단은 제목 뒤 0.25초) */
+.motion .story__intro h2,
+.motion .story__intro p {
   opacity: 0;
   transform: translateX(-80px);
   transition: opacity 600ms ease, transform 600ms cubic-bezier(.22, 1, .36, 1);
 }
 
-.story--reveal-ready.story--visible .story__intro h2,
-.story--reveal-ready.story--visible .story__intro p {
+.motion .story__intro--visible h2,
+.motion .story__intro--visible p {
   opacity: 1;
   transform: translateX(0);
   transition-duration: 1100ms;
   transition-delay: 200ms;
 }
 
-.story--reveal-ready.story--visible .story__intro p { transition-delay: 450ms; }
+.motion .story__intro--visible p { transition-delay: 450ms; }
 
 @media (prefers-reduced-motion: reduce) {
   .story--reveal-ready .story__canvas,
@@ -2453,6 +2453,7 @@ body { margin: 0; background: #080a09; }
 .motion [data-reveal="text"]:not(.is-revealed) { opacity: 0; translate: 0 24px; filter: blur(10px); }
 .motion [data-reveal="slide-left"]:not(.is-revealed) { opacity: 0; translate: -140px 0; }
 .motion [data-reveal="slide-right"]:not(.is-revealed) { opacity: 0; translate: 140px 0; }
+.motion .discovery__intro [data-reveal].is-revealed { transition-duration: 550ms, 700ms, 550ms; }
 .motion .site-footer__paper [data-reveal] { transition-duration: 1400ms, 1600ms, 1400ms; }
 
 /* 11섹션 일상에 머무는 밀도: 이미지에 마우스를 올리면 살짝 확대 */

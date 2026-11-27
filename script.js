@@ -17,6 +17,12 @@ if (story && "IntersectionObserver" in window && !window.matchMedia("(prefers-re
 
   story.querySelectorAll(".story__photo").forEach((photo) => photoObserver.observe(photo));
 
+  // 상단 제목·소개 문단은 문구 자체가 화면에 들어올 때 애니메이션을 시작한다
+  const storyIntro = story.querySelector(".story__intro");
+  new IntersectionObserver((entries) => {
+    storyIntro.classList.toggle("story__intro--visible", entries[0].isIntersecting);
+  }, { rootMargin: "0px 0px -10% 0px", threshold: 0 }).observe(storyIntro);
+
   const storyCanvas = story.querySelector(".story__canvas");
   const storyDetail = story.querySelector(".story__detail");
   const storyItems = [...story.querySelectorAll(".story__detail-item")];
@@ -121,16 +127,23 @@ if (process && "IntersectionObserver" in window && !window.matchMedia("(prefers-
   const processPhotoFrames = process.querySelectorAll(".process__photo-frame");
   let zoomFrame = 0;
 
+  // 이미지가 화면에 1/3 드러나기 전에는 작은 상태로 가만히 있다가, 1/3이 넘으면 그때부터 스크롤에 맞춰 커진다.
+  // 스크롤을 다시 올리면 같은 비율로 다시 작아진다.
+  // 이미지는 작은 크기(72%)로 틀 아래쪽에 붙어 있으므로, 틀이 아니라 실제로 보이는 작은 이미지 기준으로 1/3을 잰다.
+  const minScale = 0.72;
+  const maxScale = 1.12;
   const updateProcessZoom = () => {
     zoomFrame = 0;
     const viewportHeight = window.innerHeight;
 
     processPhotoFrames.forEach((frame) => {
       const bounds = frame.getBoundingClientRect();
-      const zoomStart = viewportHeight * 0.85;
-      const zoomEnd = viewportHeight * 0.15;
-      const progress = Math.max(0, Math.min(1, (zoomStart - bounds.top) / (zoomStart - zoomEnd)));
-      frame.querySelector(".process__photo").style.setProperty("--process-photo-scale", (0.72 + progress * 0.4).toFixed(3));
+      const smallHeight = bounds.height * minScale;
+      const smallTop = bounds.bottom - smallHeight;
+      const shownHeight = viewportHeight - smallTop;
+      const zoomDistance = viewportHeight * 0.7;
+      const progress = Math.max(0, Math.min(1, (shownHeight - smallHeight / 3) / zoomDistance));
+      frame.querySelector(".process__photo").style.setProperty("--process-photo-scale", (minScale + progress * (maxScale - minScale)).toFixed(3));
     });
   };
 
@@ -238,7 +251,7 @@ if (canAnimate && hero) {
 // 공통 등장 효과 (IntersectionObserver)
 const revealTargets = [
   [".discovery__intro h2", "text"],
-  [".discovery__tags", "text", 250],
+  [".discovery__tags", "text", 120],
   [".fragrance-story__rail", "slide-right"],
   [".fragrance-story__card", "slide-right", 750, -250],
   [".lifestyle__heading", "text"],
@@ -264,6 +277,16 @@ if (canAnimate) {
       revealObserver.observe(element);
     });
   });
+
+  // 8섹션 디스커버리 킷: 섹션이 화면에 보이자마자 텍스트가 나타난다
+  const discovery = document.querySelector(".discovery");
+  if (discovery) {
+    const discoveryTexts = discovery.querySelectorAll(".discovery__intro [data-reveal]");
+    discoveryTexts.forEach((element) => revealObserver.unobserve(element));
+    new IntersectionObserver((entries) => {
+      discoveryTexts.forEach((element) => element.classList.toggle("is-revealed", entries[0].isIntersecting));
+    }, { threshold: 0 }).observe(discovery);
+  }
 
   // 5~7섹션: 카드가 화면 중간까지 올라왔을 때 왼쪽 칸은 왼쪽에서, 오른쪽 칸은 오른쪽에서 들어온다
   const halfwayObserver = new IntersectionObserver((entries) => {
